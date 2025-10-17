@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upgrade to Premium | Prompt System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #4361ee;
             --primary-dark: #3a56d4;
             --secondary: #7209b7;
+            --accent: #ff6b6b;
             --success: #4cc9f0;
             --light: #f8f9fa;
             --dark: #212529;
             --gray: #6c757d;
-            --border-radius: 10px;
+            --border-radius: 12px;
             --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
         }
@@ -38,7 +40,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             width: 100%;
             margin: 0 auto;
         }
@@ -49,15 +51,34 @@
         }
 
         .logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 10px;
+            display: inline-block;
         }
 
         .tagline {
             color: var(--gray);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
         }
 
         .card {
@@ -65,8 +86,8 @@
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             padding: 30px;
-            margin-bottom: 30px;
             transition: var(--transition);
+            height: 100%;
         }
 
         .card:hover {
@@ -96,18 +117,29 @@
             margin-left: 10px;
         }
 
+        .price-tag {
+            background: linear-gradient(45deg, var(--accent), #ff8e8e);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
         .payment-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 20px;
-            margin-bottom: 30px;
         }
 
         .payment-option {
             background: white;
             border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
             transition: var(--transition);
             border: 2px solid transparent;
         }
@@ -116,15 +148,21 @@
             border-color: var(--primary);
         }
 
+        .bank-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
         .bank-logo {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
-            font-size: 1.8rem;
+            margin-right: 15px;
+            font-size: 1.5rem;
             color: white;
         }
 
@@ -138,7 +176,7 @@
 
         .bank-name {
             font-weight: 600;
-            margin-bottom: 5px;
+            font-size: 1.2rem;
         }
 
         .account-details {
@@ -148,8 +186,8 @@
         .account-detail {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            padding-bottom: 8px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
             border-bottom: 1px solid #eee;
         }
 
@@ -160,6 +198,8 @@
 
         .value {
             font-weight: 600;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
         }
 
         .highlight {
@@ -191,6 +231,7 @@
             justify-content: center;
             margin-right: 15px;
             flex-shrink: 0;
+            font-weight: 600;
         }
 
         .step-content {
@@ -211,7 +252,8 @@
         }
 
         .whatsapp-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             background: #25D366;
             color: white;
             padding: 12px 25px;
@@ -223,9 +265,33 @@
             box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
         }
 
+        .whatsapp-btn i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
         .whatsapp-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            background: #20bd5c;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+        }
+
+        .feature i {
+            color: var(--primary);
+            margin-right: 10px;
+            font-size: 1.1rem;
         }
 
         footer {
@@ -233,10 +299,13 @@
             margin-top: 40px;
             color: var(--gray);
             font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            width: 100%;
         }
 
         @media (max-width: 768px) {
-            .payment-options {
+            .features {
                 grid-template-columns: 1fr;
             }
             
@@ -250,101 +319,150 @@
     <div class="container">
         <header>
             <div class="logo">PromptSystem</div>
-            <p class="tagline">Upgrade to unlock premium features and enhanced capabilities</p>
+            <p class="tagline">Upgrade to unlock premium features and enhanced capabilities for your AI prompt experience</p>
         </header>
 
-        <div class="card">
-            <h2 class="card-title">
-                <i>✨</i> Upgrade to Premium
-                <span class="premium-badge">PRO</span>
-            </h2>
-            <p>Thank you for choosing to upgrade to our Premium Prompt System. Follow the instructions below to complete your payment and get immediate access to premium features.</p>
-        </div>
-
-        <div class="payment-options">
-            <div class="payment-option">
-                <div class="bank-logo uba">UBA</div>
-                <h3 class="bank-name">United Bank for Africa (UBA)</h3>
-                <div class="account-details">
-                    <div class="account-detail">
-                        <span class="label">Account Number:</span>
-                        <span class="value">2023268027</span>
+        <div class="main-content">
+            <div class="payment-info">
+                <div class="card">
+                    <h2 class="card-title">
+                        <i class="fas fa-crown"></i> Premium Upgrade
+                        <span class="premium-badge">PRO</span>
+                    </h2>
+                    
+                    <div class="price-tag">
+                        ₦3,000
                     </div>
-                    <div class="account-detail">
-                        <span class="label">Account Name:</span>
-                        <span class="value">Henry Lucky</span>
+                    
+                    <p>Thank you for choosing to upgrade to our Premium Prompt System. Follow the instructions below to complete your payment and get immediate access to premium features.</p>
+                    
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <div class="bank-header">
+                                <div class="bank-logo uba">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <h3 class="bank-name">United Bank for Africa (UBA)</h3>
+                            </div>
+                            <div class="account-details">
+                                <div class="account-detail">
+                                    <span class="label">Account Number:</span>
+                                    <span class="value">2023268027</span>
+                                </div>
+                                <div class="account-detail">
+                                    <span class="label">Account Name:</span>
+                                    <span class="value">Henry Lucky</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="payment-option">
+                            <div class="bank-header">
+                                <div class="bank-logo opay">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h3 class="bank-name">Opay Digital Services</h3>
+                            </div>
+                            <div class="account-details">
+                                <div class="account-detail">
+                                    <span class="label">Account Number:</span>
+                                    <span class="value">8033867642</span>
+                                </div>
+                                <div class="account-detail">
+                                    <span class="label">Account Name:</span>
+                                    <span class="value">Henry Lucky</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="payment-option">
-                <div class="bank-logo opay">Opay</div>
-                <h3 class="bank-name">Opay Digital Services</h3>
-                <div class="account-details">
-                    <div class="account-detail">
-                        <span class="label">Account Number:</span>
-                        <span class="value">8033867642</span>
+            <div class="instructions">
+                <div class="card">
+                    <div class="highlight">
+                        <strong><i class="fas fa-exclamation-circle"></i> Important:</strong> When making payment, please include your <strong>Telegram Username</strong> in the transaction description/note.
                     </div>
-                    <div class="account-detail">
-                        <span class="label">Account Name:</span>
-                        <span class="value">Henry Lucky</span>
+
+                    <div class="steps">
+                        <h3 class="card-title"><i class="fas fa-list-ol"></i> How to Complete Your Upgrade</h3>
+                        
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Make Payment of ₦3,000</div>
+                                <p>Transfer the premium subscription fee to either of the bank accounts listed.</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Include Your Telegram Username</div>
+                                <p>Add your Telegram username in the transaction description/note when making payment.</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Send Proof of Payment</div>
+                                <p>Take a screenshot of your payment confirmation and send it via WhatsApp.</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">Get Immediate Upgrade</div>
+                                <p>Your account will be upgraded to premium immediately after verification.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3><i class="fas fa-comment-dots"></i> Send Proof of Payment via WhatsApp</h3>
+                        <p>After payment, send your transaction screenshot to:</p>
+                        <a href="https://wa.me/2348033867642" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> 08033867642
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="highlight">
-                <strong>Important:</strong> When making payment, please include your <strong>Telegram Username</strong> in the transaction description/note.
-            </div>
-
-            <div class="steps">
-                <h3 class="card-title">How to Complete Your Upgrade</h3>
                 
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <div class="step-title">Make Payment</div>
-                        <p>Transfer the premium subscription fee to either of the bank accounts listed above.</p>
+                <div class="card">
+                    <h3 class="card-title"><i class="fas fa-star"></i> Premium Features</h3>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Advanced Prompt Templates</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Priority Processing</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Extended Response Length</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Custom Prompt Training</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Multi-language Support</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>24/7 Priority Support</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <div class="step-title">Include Your Telegram Username</div>
-                        <p>Add your Telegram username in the transaction description/note when making payment.</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <div class="step-title">Send Proof of Payment</div>
-                        <p>Take a screenshot of your payment confirmation and send it via WhatsApp to the number below.</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <div class="step-title">Get Immediate Upgrade</div>
-                        <p>Your account will be upgraded to premium immediately after verification.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contact-info">
-                <h3>Send Proof of Payment via WhatsApp</h3>
-                <p>After payment, send your transaction screenshot to:</p>
-                <a href="https://wa.me/2348033867642" class="whatsapp-btn" target="_blank">
-                    <i>📱</i> 08033867642
-                </a>
             </div>
         </div>
 
         <footer>
-            <p>© 2023 PromptSystem Premium. All rights reserved.</p>
+            <p>© 2023 PromptSystem Premium. All rights reserved. | Upgrade fee: ₦3,000</p>
         </footer>
     </div>
 </body>
