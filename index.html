@@ -3,467 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upgrade to Premium | Prompt System</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Upgrade to Premium - Payment Details</title>
     <style>
-        :root {
-            --primary: #4361ee;
-            --primary-dark: #3a56d4;
-            --secondary: #7209b7;
-            --accent: #ff6b6b;
-            --success: #4cc9f0;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --border-radius: 12px;
-            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: var(--dark);
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
 
         .container {
-            max-width: 1000px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .logo {
-            font-size: 2.8rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-
-        .tagline {
-            color: var(--gray);
-            font-size: 1.2rem;
             max-width: 600px;
-            margin: 0 auto;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: slideUp 0.6s ease;
         }
 
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        .card {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 30px;
-            transition: var(--transition);
-            height: 100%;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-        }
-
-        .card-title i {
-            margin-right: 10px;
-        }
-
-        .premium-badge {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-left: 10px;
-        }
-
-        .price-tag {
-            background: linear-gradient(45deg, var(--accent), #ff8e8e);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 1.8rem;
-            font-weight: 700;
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px;
             text-align: center;
-            margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
-        }
-
-        .payment-options {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .payment-option {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            padding: 20px;
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-
-        .payment-option:hover {
-            border-color: var(--primary);
-        }
-
-        .bank-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .bank-logo {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 1.5rem;
             color: white;
         }
 
-        .uba {
-            background: linear-gradient(45deg, #0055a5, #00a0e9);
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
         }
 
-        .opay {
-            background: linear-gradient(45deg, #00c853, #64dd17);
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .price-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .account-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 2px solid #e0e7ff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .account-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .account-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .account-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .account-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .account-value {
+            color: #333;
+            font-weight: 700;
+            text-align: right;
         }
 
         .bank-name {
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .account-details {
-            margin: 15px 0;
-        }
-
-        .account-detail {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .label {
-            font-weight: 500;
-            color: var(--gray);
-        }
-
-        .value {
-            font-weight: 600;
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-        }
-
-        .highlight {
-            background: #fff9db;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border-left: 4px solid #ffd43b;
-        }
-
-        .steps {
-            margin: 30px 0;
-        }
-
-        .step {
-            display: flex;
-            margin-bottom: 20px;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            background: var(--primary);
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
             font-weight: 600;
         }
 
-        .step-content {
-            flex: 1;
-        }
-
-        .step-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .contact-info {
-            background: var(--light);
-            padding: 20px;
-            border-radius: var(--border-radius);
+        .divider {
             text-align: center;
-            margin-top: 20px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider-text {
+            background: white;
+            padding: 0 15px;
+            position: relative;
+            color: #999;
+            font-weight: 600;
+        }
+
+        .instruction-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .instruction-box p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .instruction-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .instruction-box strong {
+            color: #333;
         }
 
         .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
+            display: block;
+            width: 100%;
             background: #25D366;
             color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
             text-decoration: none;
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-top: 15px;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-        }
-
-        .whatsapp-btn i {
-            margin-right: 8px;
-            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
         .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
-            background: #20bd5c;
+            background: #20ba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .feature {
-            display: flex;
-            align-items: center;
-        }
-
-        .feature i {
-            color: var(--primary);
+        .whatsapp-btn::before {
+            content: '📱';
             margin-right: 10px;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
         }
 
-        footer {
+        .footer {
+            background: #f8f9fa;
+            padding: 25px 30px;
             text-align: center;
-            margin-top: 40px;
-            color: var(--gray);
+            color: #666;
             font-size: 0.9rem;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            width: 100%;
+            border-top: 1px solid #e0e0e0;
         }
 
-        @media (max-width: 768px) {
-            .features {
-                grid-template-columns: 1fr;
+        .footer p {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.6rem;
             }
-            
-            .card {
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .price-badge {
+                font-size: 1.7rem;
+                padding: 12px 25px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .account-card {
                 padding: 20px;
+            }
+
+            .account-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .account-value {
+                text-align: left;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="logo">PromptSystem</div>
-            <p class="tagline">Upgrade to unlock premium features and enhanced capabilities for your AI prompt experience</p>
-        </header>
+        <div class="header">
+            <h1>🚀 Upgrade to Premium</h1>
+            <p>Premium Prompt System</p>
+            <div class="price-badge">₦3,000</div>
+        </div>
 
-        <div class="main-content">
-            <div class="payment-info">
-                <div class="card">
-                    <h2 class="card-title">
-                        <i class="fas fa-crown"></i> Premium Upgrade
-                        <span class="premium-badge">PRO</span>
-                    </h2>
-                    
-                    <div class="price-tag">
-                        ₦3,000
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">Payment Details</h2>
+                
+                <div class="account-card">
+                    <div class="account-row">
+                        <span class="account-label">Bank:</span>
+                        <span class="account-value"><span class="bank-name">UBA</span></span>
                     </div>
-                    
-                    <p>Thank you for choosing to upgrade to our Premium Prompt System. Follow the instructions below to complete your payment and get immediate access to premium features.</p>
-                    
-                    <div class="payment-options">
-                        <div class="payment-option">
-                            <div class="bank-header">
-                                <div class="bank-logo uba">
-                                    <i class="fas fa-university"></i>
-                                </div>
-                                <h3 class="bank-name">United Bank for Africa (UBA)</h3>
-                            </div>
-                            <div class="account-details">
-                                <div class="account-detail">
-                                    <span class="label">Account Number:</span>
-                                    <span class="value">2023268027</span>
-                                </div>
-                                <div class="account-detail">
-                                    <span class="label">Account Name:</span>
-                                    <span class="value">Henry Lucky</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="account-row">
+                        <span class="account-label">Account Number:</span>
+                        <span class="account-value">2023268027</span>
+                    </div>
+                    <div class="account-row">
+                        <span class="account-label">Account Name:</span>
+                        <span class="account-value">Henry Lucky</span>
+                    </div>
+                </div>
 
-                        <div class="payment-option">
-                            <div class="bank-header">
-                                <div class="bank-logo opay">
-                                    <i class="fas fa-mobile-alt"></i>
-                                </div>
-                                <h3 class="bank-name">Opay Digital Services</h3>
-                            </div>
-                            <div class="account-details">
-                                <div class="account-detail">
-                                    <span class="label">Account Number:</span>
-                                    <span class="value">8033867642</span>
-                                </div>
-                                <div class="account-detail">
-                                    <span class="label">Account Name:</span>
-                                    <span class="value">Henry Lucky</span>
-                                </div>
-                            </div>
-                        </div>
+                <div class="divider">
+                    <span class="divider-text">OR</span>
+                </div>
+
+                <div class="account-card">
+                    <div class="account-row">
+                        <span class="account-label">Bank:</span>
+                        <span class="account-value"><span class="bank-name">Opay</span></span>
+                    </div>
+                    <div class="account-row">
+                        <span class="account-label">Account Number:</span>
+                        <span class="account-value">8033867642</span>
+                    </div>
+                    <div class="account-row">
+                        <span class="account-label">Account Name:</span>
+                        <span class="account-value">Henry Lucky</span>
                     </div>
                 </div>
             </div>
 
-            <div class="instructions">
-                <div class="card">
-                    <div class="highlight">
-                        <strong><i class="fas fa-exclamation-circle"></i> Important:</strong> When making payment, please include your <strong>Telegram Username</strong> in the transaction description/note.
-                    </div>
-
-                    <div class="steps">
-                        <h3 class="card-title"><i class="fas fa-list-ol"></i> How to Complete Your Upgrade</h3>
-                        
-                        <div class="step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <div class="step-title">Make Payment of ₦3,000</div>
-                                <p>Transfer the premium subscription fee to either of the bank accounts listed.</p>
-                            </div>
-                        </div>
-
-                        <div class="step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <div class="step-title">Include Your Telegram Username</div>
-                                <p>Add your Telegram username in the transaction description/note when making payment.</p>
-                            </div>
-                        </div>
-
-                        <div class="step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <div class="step-title">Send Proof of Payment</div>
-                                <p>Take a screenshot of your payment confirmation and send it via WhatsApp.</p>
-                            </div>
-                        </div>
-
-                        <div class="step">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <div class="step-title">Get Immediate Upgrade</div>
-                                <p>Your account will be upgraded to premium immediately after verification.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-info">
-                        <h3><i class="fas fa-comment-dots"></i> Send Proof of Payment via WhatsApp</h3>
-                        <p>After payment, send your transaction screenshot to:</p>
-                        <a href="https://wa.me/2348033867642?text=I%20have%20made%20payment%2C%20this%20is%20the%20proof%20of%20my%20payment%20below" class="whatsapp-btn" target="_blank">
-                            <i class="fab fa-whatsapp"></i> 08033867642
-                        </a>
-                    </div>
+            <div class="section">
+                <h2 class="section-title">Important Instructions</h2>
+                <div class="instruction-box">
+                    <p><strong>Step 1:</strong> Make payment of ₦3,000 to either account above</p>
+                    <p><strong>Step 2:</strong> In the payment description, put your <span class="highlight">Telegram Username</span></p>
+                    <p><strong>Step 3:</strong> Click the WhatsApp button below to send your proof of payment</p>
+                    <p><strong>Step 4:</strong> You will be upgraded immediately upon verification</p>
                 </div>
-                
-                <div class="card">
-                    <h3 class="card-title"><i class="fas fa-star"></i> Premium Features</h3>
-                    <div class="features">
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Advanced Prompt Templates</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Priority Processing</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Extended Response Length</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Custom Prompt Training</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Multi-language Support</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check-circle"></i>
-                            <span>24/7 Priority Support</span>
-                        </div>
-                    </div>
-                </div>
+            </div>
+
+            <div class="section">
+                <a href="https://wa.me/2348033867642?text=I%20have%20made%20payment%2C%20this%20is%20the%20proof%20of%20my%20payment%20below" 
+                   class="whatsapp-btn" 
+                   target="_blank">
+                    Send Proof via WhatsApp
+                </a>
             </div>
         </div>
 
-        <footer>
-            <p>© 2023 PromptSystem Premium. All rights reserved. | Upgrade fee: ₦3,000</p>
-        </footer>
+        <div class="footer">
+            <p>📞 Contact: <strong>08033867642</strong></p>
+            <p>You will be upgraded <span class="highlight">immediately</span> after payment verification</p>
+        </div>
     </div>
 </body>
 </html>
